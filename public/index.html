@@ -7,9 +7,18 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="A lyrics search app built by Akpeti Trust."
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <meta property="og:title" content="Lyrics Search App" />
+    <meta
+      property="og:description"
+      content="A lyrics search app built by Akpeti Trust."
+    />
+    <meta
+      property="og:image"
+      content="https://lyrics-app.trust-akpeti.com/logo.svg"
+    />
+    <meta property="og:url" content="https://lyrics-app.trust-akpeti.com/" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -24,7 +33,13 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <title>Lyrics Search App</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -39,5 +54,18 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- SERVICE WORKER -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("service-worker.js")
+          .then(function (reg) {
+            // console.log("Yes, it did.");
+          })
+          .catch(function (err) {
+            // console.log("No it didn't. This happened:", err);
+          });
+      }
+    </script>
   </body>
 </html>

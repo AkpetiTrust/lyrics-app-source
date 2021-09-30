@@ -1,0 +1,106 @@
+.section_main {
+  margin-top: 40px;
+  font-size: 0.9em;
+
+  .top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    .image_container {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      img {
+        width: 200px;
+      }
+      p {
+        margin-top: 20px;
+        text-align: center;
+        color: transparent;
+        background-image: linear-gradient(
+          90deg,
+          #0f878a 25.26%,
+          #e9eff7 74.23%
+        );
+        background-clip: text;
+        font-weight: 800;
+        font-size: 1.1em;
+      }
+    }
+
+    .info_area {
+      display: flex;
+      flex-direction: column;
+
+      & > section {
+        margin-bottom: 7px;
+        display: flex;
+      }
+
+      .label {
+        font-weight: 700;
+      }
+
+      .value {
+        margin-left: 30px;
+      }
+
+      .icons {
+        margin-top: 10px;
+        display: flex;
+        a {
+          margin-right: 20px;
+        }
+        button {
+          background-color: #108164;
+          font-weight: 600;
+          font-size: 0.8em;
+          border: none;
+          outline: none;
+          padding: 5px 25px;
+          color: #fff;
+          height: 19px;
+          border-radius: 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  .bottom {
+    margin-top: 30px;
+    p {
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .results_container {
+      display: grid;
+      grid-auto-columns: 120px;
+      grid-auto-flow: column;
+      grid-gap: 2em;
+      overflow: auto;
+      padding-bottom: 20px;
+      &::-webkit-scrollbar {
+        height: 7px;
+      }
+    }
+  }
+}
+
+@media screen and(max-width:600px) {
+  .section_main {
+    .top {
+      .info_area,
+      .image_container {
+        grid-column: 1 / 3;
+      }
+
+      padding-bottom: 30px;
+      border-bottom: 1px solid #c4c4c4;
+    }
+  }
+}
