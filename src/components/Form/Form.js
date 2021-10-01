@@ -1,8 +1,35 @@
 import style from "./index.module.css";
+import emailjs from "emailjs-com";
 
 const Form = ({ formActive, setFormActive }) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    emailjs
+      .sendForm(
+        "service_bukbqtm",
+        "lyrics_form",
+        form,
+        "user_0NnjmDdRD3GunYYUXZyax"
+      )
+      .then(
+        (result) => {
+          //   console.log(result.text);
+        },
+        (error) => {
+          //   console.log(error.text);
+        }
+      );
+
+    form.reset();
+    setFormActive(false);
+  };
+
   return (
-    <form className={`${style.form} ${formActive ? style.active : ""}`}>
+    <form
+      className={`${style.form} ${formActive ? style.active : ""}`}
+      onSubmit={handleSubmit}
+    >
       <svg
         width="18"
         height="18"
