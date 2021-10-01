@@ -7,6 +7,7 @@ const Result = ({ song, onResultClick }) => {
       <img
         src={song.result.header_image_thumbnail_url}
         alt={song.result.full_title}
+        title={song.result.full_title}
         onClick={() => {
           onResultClick(song);
         }}

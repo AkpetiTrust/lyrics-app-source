@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import { useState, useEffect } from "react";
 import useSearch from "./hooks/useSearch";
 import Main from "./components/Main/Main";
+import Lyrics from "./components/Lyrics/Lyrics";
 
 function App() {
   // Todo: Work on skeleton loader
@@ -9,12 +10,21 @@ function App() {
   const [extraResults, setExtraResults] = useState([]);
   const [loadingState, setLoadingState] = useState(true);
   const [term, setTerm] = useState("Wizkid Mood");
+  const [lyricsActive, setLyricsActive] = useState(false);
   const { refreshFunction } = useSearch(
     term,
     setActiveSong,
     setExtraResults,
     setLoadingState
   );
+
+  const onLyricsClick = () => {
+    setLyricsActive(true);
+  };
+
+  const onArrowClick = () => {
+    setLyricsActive(false);
+  };
 
   const onResultClick = (song) => {
     setExtraResults((prevExtraResults) => {
@@ -25,8 +35,6 @@ function App() {
     });
     setActiveSong(song);
   };
-
-  useEffect(() => console.log(extraResults, "extra"));
 
   return (
     <div className="app">
@@ -65,8 +73,15 @@ function App() {
                 if (!searchTerm) return;
                 refreshFunction(searchTerm);
               }}
+              autoComplete="off"
             >
-              <input type="text" name="term" placeholder="Search" />
+              <input type="hidden" />
+              <input
+                type="text"
+                name="term"
+                placeholder="Search"
+                autoComplete="off"
+              />
             </form>
           </section>
           <Main
@@ -74,9 +89,16 @@ function App() {
             extraResults={extraResults}
             loadingProp={loadingState}
             onResultClick={onResultClick}
+            onLyricsClick={onLyricsClick}
             key={activeSong?.result?.id}
           />
         </section>
+        <Lyrics
+          activeSong={activeSong}
+          key={activeSong?.result?.id}
+          lyricsActive={lyricsActive}
+          onArrowClick={onArrowClick}
+        />
       </main>
     </div>
   );

@@ -2,8 +2,15 @@ import React, { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
 import style from "./index.module.css";
 import Result from "../Result/Result";
+import Skeleton from "../Skeleton/Skeleton";
 
-const Main = ({ activeSongProp, extraResults, loadingProp, onResultClick }) => {
+const Main = ({
+  activeSongProp,
+  extraResults,
+  loadingProp,
+  onResultClick,
+  onLyricsClick,
+}) => {
   const [activeSong, setActiveSong] = useState({});
   const [loading, setLoading] = useState(true);
   const [apiKey, setApiKey] = useState(
@@ -33,7 +40,7 @@ const Main = ({ activeSongProp, extraResults, loadingProp, onResultClick }) => {
   }, []);
 
   if (loading || loadingProp) {
-    return <section></section>;
+    return <Skeleton />;
   }
 
   return (
@@ -61,7 +68,7 @@ const Main = ({ activeSongProp, extraResults, loadingProp, onResultClick }) => {
           </section>
           <section className={style.icons}>
             <a
-              href={activeSong.media[0].url}
+              href={activeSong?.media[0]?.url}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -90,7 +97,7 @@ const Main = ({ activeSongProp, extraResults, loadingProp, onResultClick }) => {
               </svg>
             </a>
             <a
-              href={activeSong.apple_music_player_url}
+              href={activeSong?.apple_music_player_url}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -115,7 +122,7 @@ const Main = ({ activeSongProp, extraResults, loadingProp, onResultClick }) => {
                 </defs>
               </svg>
             </a>
-            <button>LYRICS</button>
+            <button onClick={onLyricsClick}>LYRICS</button>
           </section>
         </div>
       </div>

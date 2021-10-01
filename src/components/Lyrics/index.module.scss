@@ -1,0 +1,52 @@
+.lyrics {
+  min-height: 100vh;
+  border-left: 1px solid #c4c4c4;
+  padding-left: 40px;
+  line-height: 1.8em;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    pointer-events: none;
+  }
+
+  img,
+  .arrow {
+    display: none;
+  }
+}
+
+@media screen and(max-width:600px) {
+  .lyrics {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    padding-top: 60px;
+    border: none;
+    background-color: #111111;
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    .arrow,
+    img {
+      display: initial;
+      position: absolute;
+    }
+
+    .arrow {
+      left: 30px;
+      top: 10px;
+    }
+
+    img {
+      top: 10px;
+      right: 30px;
+      width: 100px;
+    }
+  }
+}
