@@ -43,8 +43,8 @@ const Lyrics = ({ activeSong, lyricsActive, onArrowClick }) => {
       </svg>
       <div dangerouslySetInnerHTML={{ __html: text }}></div>
       <img
-        src={activeSong.result.header_image_thumbnail_url}
-        alt={activeSong.result.full_title}
+        src={activeSong?.result?.header_image_thumbnail_url}
+        alt={activeSong?.result?.full_title}
       />
     </section>
   );

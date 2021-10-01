@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import useSearch from "./hooks/useSearch";
 import Main from "./components/Main/Main";
 import Lyrics from "./components/Lyrics/Lyrics";
+import Form from "./components/Form/Form";
 
 function App() {
   // Todo: Work on skeleton loader
@@ -11,6 +12,7 @@ function App() {
   const [loadingState, setLoadingState] = useState(true);
   const [term, setTerm] = useState("Wizkid Mood");
   const [lyricsActive, setLyricsActive] = useState(false);
+  const [formActive, setFormActive] = useState(false);
   const { refreshFunction } = useSearch(
     term,
     setActiveSong,
@@ -40,8 +42,14 @@ function App() {
     <div className="app">
       <main>
         <section className="main-inner">
+          <Form formActive={formActive} setFormActive={setFormActive} />
           <img src={logo} alt="logo" className="logo" />
-          <button className="help-button center">?</button>
+          <button
+            className="help-button center"
+            onClick={() => setFormActive(true)}
+          >
+            ?
+          </button>
           <h1 className="title">LYRICS SEARCH</h1>
           <p className="talk">
             Search for your favorite songs and get the lyrics so you stop
